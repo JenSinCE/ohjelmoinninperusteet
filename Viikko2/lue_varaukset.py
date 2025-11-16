@@ -28,12 +28,12 @@ def main():
         varaus = rivi.strip().split('|')
         varausnumero = varaus[0]
         varaaja = varaus[1]
-        paiva = varaus[2]
-        aika = varaus[3]
+        paiva = datetime.strptime(varaus[2], "%Y-%m-%d").strftime("%d.%m.%Y") # Muutetaan päivämäärä haluttuun muotoon
+        aika = varaus[3].replace(":", ".") # Muutetaan aika haluttuun muotoon
         tuntimaara = varaus[4]
         tuntihinta = float(varaus[5].replace(",", "."))
         kokonaishinta = float(tuntimaara) * tuntihinta
-        maksettu = varaus[6]
+        maksettu = varaus[6].lower() == "true"
         kohde = varaus[7]
         puhelin = varaus[8]
         sahkoposti = varaus[9]
@@ -45,7 +45,7 @@ def main():
         print(f"Tuntimäärä: {tuntimaara}")
         print(f"Tuntihinta: {tuntihinta} €")
         print(f"Kokonaishinta: {kokonaishinta} €")
-        print(f"Maksettu: {maksettu}")
+        print(f"Maksettu: {'Kyllä' if maksettu else 'Ei'}")
         print(f"Kohde: {kohde}")
         print(f"Puhelin: {puhelin}")
         print(f"Sähköposti: {sahkoposti}")
