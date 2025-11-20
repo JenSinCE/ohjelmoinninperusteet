@@ -38,6 +38,8 @@ def main():
         hae_kohde(varaus)
         hae_puhelin(varaus)
         hae_sahkoposti(varaus)
+        print()  # Tyhjä rivi varausten väliin
+
 
 def hae_varausnumero(varaus):
     numero = varaus[0]
