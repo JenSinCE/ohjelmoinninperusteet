@@ -42,7 +42,7 @@ def main():
 
 
 def hae_varausnumero(varaus):
-    numero = varaus[0]
+    numero = int(varaus[0])
     print(f"Varausnumero: {numero}")
 
 def hae_varaaja(varaus):
@@ -54,19 +54,20 @@ def hae_paiva(varaus):
     print(f"Päivämäärä: {paiva}")
 
 def hae_aika(varaus):
-    aika = varaus[3].replace(":", ".")
+    aika = datetime.strptime(varaus[3], "%H:%M").strftime("%H.%M")
+
     print(f"Aloitusaika: {aika}")
 
 def hae_tuntimaara(varaus):
-    tuntimaara = varaus[4]
+    tuntimaara = int(varaus[4])
     print(f"Tuntimäärä: {tuntimaara}")
 
 def hae_tuntihinta(varaus):
-    tuntihinta = varaus[5]
-    print(f"Tuntihinta: {tuntihinta} €")
+    tuntihinta = float(varaus[5])  
+    print(f"Tuntihinta: {tuntihinta:.2f} €")
 
 def hae_kokonaishinta(varaus):
-    tuntimaara = float(varaus[4])
+    tuntimaara = int(varaus[4])
     tuntihinta = float(varaus[5].replace(",", "."))
     kokonaishinta = tuntimaara * tuntihinta
     print(f"Kokonaishinta: {kokonaishinta:.2f} €")
