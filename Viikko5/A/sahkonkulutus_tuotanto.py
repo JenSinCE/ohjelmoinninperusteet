@@ -6,7 +6,7 @@ from datetime import datetime, date                                         # Ta
 
 
 def muunna_tiedot(kulutus_tuotanto: list) -> list:                          
-    """Muuntaa rivin tiedot oikeisiin tietotyyppeihin ja arvot Wh-kWh."""
+    """muuntaa rivin tiedot oikeisiin tietotyyppeihin ja arvot Wh-kWh."""
     
     muutettu = []                                                           # Lista muunnetuista tiedoista
     
@@ -26,7 +26,7 @@ def muunna_tiedot(kulutus_tuotanto: list) -> list:
 
 
 def lue_data(tiedoston_nimi: str) -> list:    
-    """Lukee tiedoston ja palauttaa rivit oikeissa tietotyypeissä."""
+    """lukee tiedoston ja palauttaa rivit oikeissa tietotyypeissä."""
     
     rivit = []                                                               # Lista kaikista riveistä muunnetuissa tietotyypeissä
     
@@ -49,14 +49,14 @@ def lue_data(tiedoston_nimi: str) -> list:
 
 def paivan_tiedot(paiva: date, rivit: list) -> list:
     """
-    Laskee yhden päivän kulutus- ja tuotantotiedot vaiheittain.
+    laskee yhden päivän kulutus- ja tuotantotiedot vaiheittain.
     
     Parametrit:
-        paiva (date): Päivämäärä, jolta tiedot lasketaan.
-        rivit (list): Lista rivejä, jokaisessa [datetime, kWh1, kWh2, kWh3, t1, t2, t3]
+        paiva (date) = päivämäärä, jolta tiedot lasketaan.
+        rivit (list) =lista rivejä, jokaisessa datetime on kWh1, kWh2, kWh3, t1, t2, t3
         
     Palauttaa:
-        list: [päivämäärä merkkijonona, kulutus v1-v3, tuotanto v1-v3]
+        päivämäärä merkkijonona, kulutus v1-v3, tuotanto v1-v3
     """
     kulutus = [0.0, 0.0, 0.0]                                       # Lista kulutukselle vaiheittain
     tuotanto = [0.0, 0.0, 0.0]                                      # Lista tuotannolle vaiheittain 
@@ -86,7 +86,7 @@ def main():   #pääohjelma
     
     
     """
-     Pääohjelma lukee datan, laskee yhteenvedot ja tulostaa raportin.
+     pääohjelma lukee datan, laskee yhteenvedot ja tulostaa raportin + listaus viikon päivämääristä
     """
     rivit = lue_data("viikko42.csv")                   # Lue data tiedostosta
     viikonpaivat = [                                   # listaus viikonpäivistä
@@ -115,6 +115,7 @@ def main():   #pääohjelma
         print(f"{viikonpaivat[i]:<12}\t" + "\t".join(tiedot))                                            # Tulostetaan päivän tiedot muodossa, 12 merkkiä vasemmalle tasattuna
 
     print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+    print("AIKAMOISTA JA NIIN PALJON OPITTAVAA.")                                                        #oma kommentti loppuun
     print()
 
      
