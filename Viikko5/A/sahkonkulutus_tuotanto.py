@@ -111,8 +111,8 @@ def main():   #pääohjelma
     print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 
     for i in range(7):                                                                                   # Käydään läpi viikon päivät
-        tiedot = paivan_tiedot(paivat[i], rivit)
-        print(f"{viikonpaivat[i]:<12}\t" + "\t".join(tiedot))                                            # Tulostetaan päivän tiedot muodossa
+        tiedot = paivan_tiedot(paivat[i], rivit)                                                         # Haetaan päivän tiedot
+        print(f"{viikonpaivat[i]:<12}\t" + "\t".join(tiedot))                                            # Tulostetaan päivän tiedot muodossa, 12 merkkiä vasemmalle tasattuna
 
     print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
     print()
