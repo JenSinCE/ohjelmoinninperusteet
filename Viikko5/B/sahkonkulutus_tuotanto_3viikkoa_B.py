@@ -1,7 +1,7 @@
 # Copyright (c) 2025 Jenni Sinisaari
 # License: MIT
 
-from datetime import datetime, date, timedelta                                         # Tarvitaan datetime ja date tietotyyppejä varten      
+from datetime import datetime, date, timedelta                              # Tuodaan tarvittavat moduulit    
 
 def muunna_tiedot(kulutus_tuotanto: list) -> list:                          
     """muuntaa rivin tiedot oikeisiin tietotyyppeihin ja arvot Wh-kWh."""
@@ -77,7 +77,7 @@ def paivan_tiedot(paiva: date, rivit: list) -> list:
     
     ]
 
-def viikkoraportti(viikkonumero: int, aloituspv: datetime.date, rivit: list) -> str:
+def viikkoraportti(viikkonumero: int, aloituspv: datetime.date, rivit: list) -> str:              
     """
     Laskee viikkoraportin annettuihin viikonpäiviin ja
 
@@ -89,26 +89,26 @@ def viikkoraportti(viikkonumero: int, aloituspv: datetime.date, rivit: list) -> 
     Palautus:
      raportti (Str): Raportti tekstinä
     """
-
-    viikonpaivat = [
+ 
+    viikonpaivat = [                                                                                   # Lista viikonpäivistä
         "maanantai",
-        "tiistais",
+        "tiistai\t",
         "keskiviikko",
         "torstai\t",
         "perjantai",
-        "lauantain",
+        "lauantai",
         "sunnuntai",
     ]
 
-    raportti = f"\nVIIKON {viikkonumero} SÄHKÖNKULUTUS JA -TUOTANTO💡⚡ (kWh, vaiheittain)\n\n"
-    raportti += "Viikonäivä\tPäivämäärä\tKulutus [kWh]\t\tTuotanto [kWh]\n"
+    raportti = f"\nVIIKON {viikkonumero} SÄHKÖNKULUTUS JA -TUOTANTO💡⚡ (kWh, vaiheittain)\n\n"              
+    raportti += "Viikonpäivä\tPäivämäärä\tKulutus [kWh]\t\tTuotanto [kWh]\n"
     raportti += "\t\t\t\t\t\t v1\t\t v2\t\t v3\t\t v1\t\t v2\t\t v3\n"
     raportti += "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"
-    for i, paiva in enumerate(viikonpaivat):
-        raportti += paiva + "\t" + "\t".join(paivan_tiedot(aloituspv+timedelta(days=i), rivit)) + "\n"
+    for i, paiva in enumerate(viikonpaivat):                                                                 # Käy läpi viikonpäivät
+        raportti += paiva + "\t" + "\t".join(paivan_tiedot(aloituspv+timedelta(days=i), rivit)) + "\n"       # Lisää päivän tiedot raporttiin
 
-    raportti += "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"
-    return raportti
+    raportti += "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n" 
+    return raportti                                                                                          # Palauta muodostettu raportti
 
 def main():   #pääohjelma
     
@@ -116,22 +116,22 @@ def main():   #pääohjelma
     """
      pääohjelma lukee datan, laskee yhteenvedot ja tulostaa raportin + listaus viikon päivämääristä
     """
-    kt41 = lue_data("viikko41.csv")                                                            # Lista kaikista riveistä muunnetuissa tietotyypeissä
+    kt41 = lue_data("viikko41.csv")                                                                           # Lista kaikista riveistä muunnetuissa tietotyypeissä
     kt42 = lue_data("viikko42.csv") 
     kt43 = lue_data("viikko43.csv")                  
 
-    aloituspv = date(2025, 10, 6)  # maanantai
+    aloituspv = date(2025, 10, 6)  # maanantai                                                                # Viikon 41 aloituspäivä 
 
-    raporttivko41 = viikkoraportti(41, aloituspv, kt41)    
-    raporttivko42 = viikkoraportti(42, aloituspv + timedelta(weeks=1), kt42)
-    raporttivko43 = viikkoraportti(43, aloituspv + timedelta(weeks=2), kt43)            
+    raporttivko41 = viikkoraportti(41, aloituspv, kt41)                                                       # Viikon 41 raportti
+    raporttivko42 = viikkoraportti(42, aloituspv + timedelta(weeks=1), kt42)                                  # Viikon 42 raportti
+    raporttivko43 = viikkoraportti(43, aloituspv + timedelta(weeks=2), kt43)                                  # Viikon 43 raportti          
 
-    with open("yhteenveto.txt", "w", encoding="utf-8") as f:
-        f.write(raporttivko41)
-        f.write(raporttivko42)
-        f.write(raporttivko43)
+    with open("yhteenveto.txt", "w", encoding="utf-8") as f:                                                  # avaa tiedosto kirjoittamista varten
+        f.write(raporttivko41)                                                                                # kirjoita viikon 41 raportti tiedostoon
+        f.write(raporttivko42)                                                                                # kirjoita viikon 42 raportti tiedostoon
+        f.write(raporttivko43)                                                                                # kirjoita viikon 43 raportti tiedostoon
 
-    print("RAPORTTI LUOTU 📋🗂️")
+    print("RAPORTTI LUOTU 📋🗂️") 
 
 
 if __name__ == "__main__":
