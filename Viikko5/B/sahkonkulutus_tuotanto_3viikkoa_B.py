@@ -1,7 +1,7 @@
 # Copyright (c) 2025 Jenni Sinisaari
 # License: MIT
 
-from datetime import datetime, date, timedelta                              # Tuodaan tarvittavat moduulit    
+from datetime import datetime, date, timedelta                              # Tuodaan datetime, date ja timedelta moduulit   
 
 def muunna_tiedot(kulutus_tuotanto: list) -> list:                          
     """muuntaa rivin tiedot oikeisiin tietotyyppeihin ja arvot Wh-kWh."""
@@ -90,14 +90,9 @@ def viikkoraportti(viikkonumero: int, aloituspv: datetime.date, rivit: list) -> 
      raportti (Str): Raportti tekstinä
     """
  
-    viikonpaivat = [                                                                                   # Lista viikonpäivistä
-        "maanantai",
-        "tiistai\t",
-        "keskiviikko",
-        "torstai\t",
-        "perjantai",
-        "lauantai",
-        "sunnuntai",
+    viikonpaivat = [                                                                                          # listaus viikonpäivistä
+        "maanantai", "tiistai\t", "keskiviikko",
+        "torstai\t", "perjantai", "lauantai", "sunnuntai"
     ]
 
     raportti = f"\nVIIKON {viikkonumero} SÄHKÖNKULUTUS JA -TUOTANTO💡⚡ (kWh, vaiheittain)\n\n"              
