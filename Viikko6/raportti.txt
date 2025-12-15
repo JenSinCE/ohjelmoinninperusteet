@@ -1,0 +1,5 @@
+KUUKAUDEN YHTEENVETO
+Kuukausi: 1
+Kokonaiskulutus: 1545,24 kWh
+Kokonaistuotanto: 0,00 kWh
+Keskilämpötila: -0,08 °C
